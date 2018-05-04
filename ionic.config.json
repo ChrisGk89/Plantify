@@ -1,0 +1,8 @@
+{
+  "name": "Plantify",
+  "app_id": "661cbf4e",
+  "type": "ionic-angular",
+  "integrations": {
+    "cordova": {}
+  }
+}
