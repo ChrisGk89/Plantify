@@ -1,3 +1,4 @@
+
 <ion-header>
   <ion-navbar>
     <ion-title>
@@ -11,9 +12,8 @@
 	<ion-card>
   <img src="assets/imgs/eco-bike.png"/>
   <ion-card-content>
-    <ion-card-title>
-      First Challenge
-      </ion-card-title>
+
+    <button class="button1" ion-button color="secondary" [navPush]="Challenge1Page">First Challenge</button>
     <p>
       Do you know that the greenest way of transport is walk or cycle? They promoting healthy lifestyle too!
 For this challenge you could choose one of  these ways.
@@ -25,9 +25,7 @@ For this challenge you could choose one of  these ways.
 <ion-card>
   <img src="assets/imgs/recycle.png"/>
   <ion-card-content>
-    <ion-card-title>
-      Second Challenge
-      </ion-card-title>
+    <button class="button2" ion-button color="secondary" [navPush]="Challenge2Page">Second Challenge</button>
     <p>
       Recycling is the process of collecting and processing materials that would otherwise be thrown away as trash and turning them into new products. Recycling can benefit your community and the environment.
     </p>
@@ -38,9 +36,7 @@ For this challenge you could choose one of  these ways.
 <ion-card>
   <img src="assets/imgs/eatright.jpg"/>
   <ion-card-content>
-    <ion-card-title>
-      Third Challenge
-      </ion-card-title>
+    <button class="button3" ion-button color="secondary" [navPush]="ChallengePage">Third Challenge</button>
     <p>
       Good nutrition – an adequate, well balanced diet combined with regular physical activity – is a cornerstone of good health.
     </p>
