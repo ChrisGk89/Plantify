@@ -1,6 +1,10 @@
+///<reference path="../../node_modules/@ionic-native/file-transfer/index.d.ts"/>
 import { NgModule, ErrorHandler } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { IonicApp, IonicModule, IonicErrorHandler } from 'ionic-angular';
+import { FileTransfer, FileUploadOptions, FileTransferObject } from '@ionic-native/file-transfer';
+import { File } from '@ionic-native/file';
+import { Camera } from '@ionic-native/camera';
 import { MyApp } from './app.component';
 
 import { AboutPage } from '../pages/about/about';
@@ -43,7 +47,10 @@ import {Challenge3Page} from "../pages/challenge3/challenge3";
   providers: [
     StatusBar,
     SplashScreen,
-    {provide: ErrorHandler, useClass: IonicErrorHandler}
+    {provide: ErrorHandler, useClass: IonicErrorHandler},
+    FileTransferObject,
+    File,
+    Camera
   ]
 })
 export class AppModule {}

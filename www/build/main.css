@@ -25681,3 +25681,9 @@ ion-navbar.toolbar {
 page-about ion-card-content {
   text-align: center;
 }
+
+page-contact .profile-image {
+  width: 200px;
+  height: 200px;
+  border-radius: 50%;
+}
