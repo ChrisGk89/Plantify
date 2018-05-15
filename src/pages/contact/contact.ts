@@ -1,51 +1,81 @@
 import { Component } from '@angular/core';
-import { NavController,NavParams } from 'ionic-angular';
+import { NgForm } from "@angular/forms";
+import {
+  ModalController, LoadingController, ToastController, ViewController, NavController,
+  Events, AlertController
+} from "ionic-angular";
+import { Geolocation } from '@ionic-native/geolocation';
+import { Camera } from '@ionic-native/camera';
+import { File } from '@ionic-native/file';
+import { Posts } from "../../services/post-service";
+import { Storage } from "@ionic/storage";
+//import {HomePage} from "../home/home";
+
+
+
+declare var cordova: any;
 
 @Component({
-  selector: 'page-contact',
-  templateUrl: 'contact.html'
+    selector: 'page-contact',
+    templateUrl: 'contact.html'
 })
 export class ContactPage {
 
-  public person: {name: string, company: string, birthdate?: number};
-  dob: any;
-  age: any;
-  showProfile: boolean;
+    isLoggedIn: boolean = false;
 
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
 
-    this.person = {name: undefined, company: undefined, birthdate: undefined};
-    this.dob = undefined;
+    constructor(private modalCtrl: ModalController,
+                private loadingCtrl: LoadingController,
+                private alertCtrl: AlertController,
+                private toastCtrl: ToastController,
+                private geolocation: Geolocation,
+                private camera: Camera,
+                private file: File,
+                private storage: Storage,
+                private postService: Posts,
+                private viewCtrl: ViewController,
+                private navCtrl: NavController,
+                public events: Events
+    ) {
 
-  }
-
-  ionViewDidLoad() {
-    let person = JSON.parse(localStorage.getItem('PERSON'));
-    if (person){
-      this.person = person;
-      this.age = this.getAge(this.person.birthdate);
-      this.dob = new Date(this.person.birthdate).toISOString();
+        this.storage.get('token').then((val) => {
+            if(val!="" && val!= null){
+                this.isLoggedIn = true;
+            }
+        });
     }
+
+    onSubmit(form: NgForm) {
+        let newContact = {
+            name: form.value.name,
+            body: form.value.message,
+            email: form.value.email
+        };
+        console.log('comment data: '+newContact);
+        this.postService
+            .addContact(newContact);
+        form.reset();
+
+        const toast = this.toastCtrl.create({
+            message: 'Message Submitted!',
+            duration: 2500
+        });
+        toast.present();
+       // this.navCtrl.setRoot(HomePage);
+    }
+
+  presentAlert() {
+    let alert = this.alertCtrl.create({
+      title: 'Message Sent',
+      subTitle: 'We will do our best answering all the messages.',
+      buttons: ['OK']
+    });
+    alert.present();
   }
 
-  reset(){
-    this.person = {name: null, company: null, birthdate: null};
-    this.dob = null;
-    this.showProfile = false;
-  }
 
-  save(){
-    this.person.birthdate = new Date(this.dob).getTime();
-    this.age = this.getAge(this.person.birthdate);
-    this.showProfile = true;
-    localStorage.setItem('PERSON', JSON.stringify(this.person));
-  }
+    dismiss() {
+        this.viewCtrl.dismiss();
 
-  getAge(birthdate){
-    let currentTime = new Date().getTime();
-    return ((currentTime - birthdate)/31556952000).toFixed(0);
-  }
-
-
-
+    }
 }

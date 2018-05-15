@@ -1,0 +1,56 @@
+<ion-header>
+  <ion-navbar>
+    <ion-buttons left>
+      <button ion-button menuToggle end>
+        <ion-icon name="menu"></ion-icon>
+      </button>
+    </ion-buttons>
+
+    <ion-title>
+     Carbon Footprint Challenges
+    </ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding class="bg">
+  <h3>Footprint Challenges</h3>
+
+  <a (click)="onGoToSubmit(1, 'Recycling')">
+
+      <img src="../assets/images/recycle001.png"> <span><strong>Recycling:</strong> 10 points</span>
+  </a>
+  <a (click)="onGoToSubmit(2, 'Bicycling')">
+
+    <img src="../assets/images/cycleing.png"><span><strong>Use bicycle instead of Bus:</strong> 20 points</span>
+  </a>
+  <a (click)="onGoToSubmit(3, 'Tree Plantation')">
+
+    <img src="../assets/images/plant-tree.jpg">
+
+    <span> <strong>Plant a Tree:</strong> 40 points</span>
+  </a>
+  <a (click)="onGoToSubmit(4, 'Public Transport')">
+
+    <img src="../assets/images/public-transport.png">
+
+    <span> <strong>Use Public Transport:</strong> 10 points</span>
+  </a> <a (click)="onGoToSubmit(5, 'Outdoor Activity')">
+
+  <img src="../assets/images/black-and-white-sport-icons.jpg">
+
+  <span> <strong>Attend outdoor activity:</strong> 10 points</span>
+</a>
+
+
+  <ion-card class="facts">
+
+    <ion-card-content text-center>
+      <ion-card-title>
+         {{this.advices}}
+        </ion-card-title>
+
+    </ion-card-content>
+  </ion-card>
+
+
+</ion-content>

@@ -1,0 +1,59 @@
+<ion-header>
+  <ion-navbar>
+    <ion-buttons left>
+      <button ion-button menuToggle end>
+        <ion-icon name="menu"></ion-icon>
+      </button>
+    </ion-buttons>
+
+    <ion-title>
+      Plantify : Today's Challenges
+    </ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding class="bg">
+  <h3>Today's Challenges</h3>
+
+
+     <h5 class="discrip">Every day you need to walk at least 30 minutes and take a carbon
+       footprint challenge. You can take extra challenges which will boost your point!
+     </h5>
+
+  <a (click)="onGoToSubmit()" *ngIf="this.isNotSubmittedToday">
+  <ion-card>
+    <img src="../assets/images/walking.png">
+    <ion-card-content text-center>
+      <ion-card-title>
+       30 minutes walking
+      </ion-card-title>
+      <!--div class="discription" >Test</div>-->
+
+    </ion-card-content>
+
+  </ion-card></a>
+  <a (click)="onGoToChallenge()">
+  <ion-card>
+    <img src="../assets/images/carbon-footprint.jpg">
+    <ion-card-content text-center>
+      <ion-card-title>
+        Take one Carbon Foorprint Challenges
+      </ion-card-title>
+      <!--div class="discription" >Test</div>-->
+
+    </ion-card-content>
+  </ion-card>
+
+  </a>
+
+  <ion-card class="facts">
+
+    <ion-card-content text-center>
+      <ion-card-title>
+        {{this.advices}}
+      </ion-card-title>
+    </ion-card-content>
+  </ion-card>
+
+
+</ion-content>

@@ -1,0 +1,31 @@
+page-challenge {
+
+  a:hover .card{
+    background:rgba(0,128,0,0.5) !important;
+  }
+  a:hover ion-card img{
+    opacity: .7;
+  }
+  h3, h5{
+    text-align:center;
+  }
+  h5{
+    padding-borrom:20px;
+  }
+  ion-card img {
+    display: block;
+    width: auto;
+    max-height: 100px;
+    text-align: center;
+    margin: 0 auto;
+  }
+
+}
+.facts .card-title {
+  color: green;
+  font-size: 18px;
+  font-weight: 600;
+}
+.facts {
+  background: rgba(166, 200, 200, .7);
+}

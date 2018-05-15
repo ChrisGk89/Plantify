@@ -1,0 +1,89 @@
+
+<ion-header>
+
+  <ion-navbar>
+    <ion-title>Foot Print Challenge</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding *ngIf="this.isLoggedIn">
+  <h3>{{this.catName}} Submission Form</h3>
+  <form #f="ngForm" (ngSubmit)="onSubmit(f)">
+    <ion-list>
+      <ion-item>
+       <br>
+      </ion-item>
+      <ion-item>
+        <ion-label fixed>Title</ion-label>
+        <ion-input
+          type="text"
+          placeholder="Challenge Name..."
+          name="title"
+          ngModel
+          required></ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-label floating>Short Description</ion-label>
+        <ion-textarea
+          name="body"
+          ngModel
+          required></ion-textarea>
+      </ion-item>
+    </ion-list>
+    <ion-grid>
+      <ion-row>
+        <ion-col text-center>
+          <h5>Take a Photo!</h5>
+        </ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col>
+          <button
+            ion-button
+            icon-left
+            block
+            outline
+            type="button"
+            (click)="onTakePhoto()">
+            <ion-icon name="camera"></ion-icon>
+            Open Camera
+          </button>
+        </ion-col>
+      </ion-row>
+      <ion-row *ngIf="imageUrl != ''">
+        <ion-col>
+          <img [src]="imageUrl">
+        </ion-col>
+      </ion-row>
+
+      <ion-row>
+        <ion-col>
+          <button
+            ion-button
+            color="secondary"
+            block
+            type="submit"
+            [disabled]="!f.valid">
+            Submit Activity
+          </button>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+
+  </form>
+
+  <ion-card class="facts">
+
+    <ion-card-content text-center>
+      <ion-card-title>
+        {{this.advices}}
+      </ion-card-title>
+
+
+    </ion-card-content>
+  </ion-card>
+
+</ion-content>

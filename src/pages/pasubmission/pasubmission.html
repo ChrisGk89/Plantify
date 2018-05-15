@@ -1,0 +1,80 @@
+
+<ion-header>
+
+  <ion-navbar>
+    <ion-title>Submit Physical Activity Info</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding *ngIf="this.isLoggedIn">
+  <h3>Physical Activity Challenges</h3>
+  <form #f="ngForm" (ngSubmit)="onSubmit(f)">
+    <ion-list>
+      <ion-item>
+        <br>
+      </ion-item>
+
+
+      <ion-list radio-group name="activityTypeGroup" [(ngModel)]="activityTypeGroup">
+
+        <ion-list-header>
+         Activity Types
+        </ion-list-header>
+
+        <ion-item>
+          <ion-label>Walking</ion-label>
+          <ion-radio name="activityType" value="Walking"></ion-radio>
+        </ion-item>
+
+        <ion-item>
+          <ion-label>Running</ion-label>
+          <ion-radio name="activityType"  value="Running"></ion-radio>
+        </ion-item>
+
+        <ion-item>
+          <ion-label>Cycling</ion-label>
+          <ion-radio name="activityType" value="Cycling"></ion-radio>
+        </ion-item>
+
+      </ion-list>
+
+      <ion-item>
+        <ion-label fixed>Distance?</ion-label>
+        <ion-input
+                type="text"
+                placeholder="How Many KM?"
+                name="distance"
+                ngModel
+                required></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label fixed>Time taken?</ion-label>
+        <ion-input
+                type="text"
+                placeholder="How Many minutes?"
+                name="time"
+                ngModel
+                required></ion-input>
+      </ion-item>
+    </ion-list>
+    <ion-grid>
+
+
+      <ion-row>
+        <ion-col>
+          <button
+                  ion-button
+                  color="secondary"
+                  block
+                  type="submit"
+                  [disabled]="!f.valid">
+            Submit
+          </button>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+
+  </form>
+</ion-content>

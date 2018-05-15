@@ -1,56 +1,107 @@
-///<reference path="../../node_modules/@ionic-native/file-transfer/index.d.ts"/>
 import { NgModule, ErrorHandler } from '@angular/core';
-import { BrowserModule } from '@angular/platform-browser';
 import { IonicApp, IonicModule, IonicErrorHandler } from 'ionic-angular';
-import { FileTransfer, FileUploadOptions, FileTransferObject } from '@ionic-native/file-transfer';
+import { IonicStorageModule } from "@ionic/storage";
+import { BrowserModule } from '@angular/platform-browser';
+import { HttpModule } from '@angular/http';
 import { File } from '@ionic-native/file';
 import { Camera } from '@ionic-native/camera';
-import { MyApp } from './app.component';
-
-import { AboutPage } from '../pages/about/about';
-import { ContactPage } from '../pages/contact/contact';
-import { HomePage } from '../pages/home/home';
-import { TabsPage } from '../pages/tabs/tabs';
-
+import { Geolocation } from '@ionic-native/geolocation';
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
-import { Challenge1Page} from "../pages/challenge1/challenge1";
-import {Challenge2Page} from "../pages/challenge2/challenge2";
-import {Challenge3Page} from "../pages/challenge3/challenge3";
 
+import { MyApp } from './app.component';
+import { HomePage } from '../pages/home/home';
+import { AddPlacePage } from "../pages/add-place/add-place";
+import { PlacePage } from "../pages/place/place";
+import { ShowPage } from "../pages/show/show";
+import { SetLocationPage } from "../pages/set-location/set-location";
+//import { AgmCoreModule } from "angular2-google-maps/core";
+import { AgmCoreModule } from '@agm/core';
+import { PlacesService } from "../services/places";
+import {Posts}  from "../services/post-service";
+import { TwitterService } from 'ng2-twitter';
+import { Base64 } from '@ionic-native/base64';
+import { FileTransfer } from '@ionic-native/file-transfer';
+import {SocialSharing} from "@ionic-native/social-sharing";
+import { WeatherProvider } from '../services/weather';
+import { AuthService } from '../services/auth-service';
+import { LoginPage } from '../pages/login/login';
+import { RegisterPage } from '../pages/register/register';
+import { LogoutPage } from '../pages/logout/logout';
+import {CategoryPage} from "../pages/category/category";
+import {ContactPage} from "../pages/contact/contact";
+import {ChallengePage} from "../pages/challenge/challenge";
+import {PasubmissionPage} from "../pages/pasubmission/pasubmission";
+import {ChallengesPage} from "../pages/challenges/challenges";
+import {AllActivityPage} from "../pages/all-activity/all-activity";
+import {StatsPage} from "../pages/stats/stats";
+import {TabsPage} from "../pages/tabs/tabs";
 @NgModule({
   declarations: [
     MyApp,
-    AboutPage,
-    ContactPage,
     HomePage,
-    TabsPage,
-    Challenge1Page,
-    Challenge2Page,
-    Challenge3Page
+    AddPlacePage,
+    PlacePage,
+    SetLocationPage,
+    ShowPage,
+    LoginPage,
+    RegisterPage,
+      LoginPage,
+      LogoutPage,
+      CategoryPage,
+      ContactPage,
+      ChallengePage,
+      PasubmissionPage,
+      ChallengesPage,
+      AllActivityPage,
+      StatsPage,
+      TabsPage
   ],
   imports: [
     BrowserModule,
-    IonicModule.forRoot(MyApp)
+    HttpModule,
+    IonicStorageModule.forRoot(),
+    IonicModule.forRoot(MyApp),
+    AgmCoreModule.forRoot({
+      apiKey: 'AIzaSyBy1xOdJUZRt5aqPjUJugh0eWETvHlgpXA'
+    })
   ],
   bootstrap: [IonicApp],
   entryComponents: [
     MyApp,
-    AboutPage,
-    ContactPage,
     HomePage,
-    TabsPage,
-    Challenge1Page,
-    Challenge2Page,
-    Challenge3Page
+    AddPlacePage,
+    PlacePage,
+    SetLocationPage,
+    ShowPage,
+    LoginPage,
+    RegisterPage,
+      LogoutPage,
+      CategoryPage,
+      ContactPage,
+      ChallengePage,
+      PasubmissionPage,
+      ChallengesPage,
+      AllActivityPage,
+      StatsPage,
+      TabsPage
   ],
   providers: [
+      SocialSharing,
+    File,
+    Camera,
+    Geolocation,
     StatusBar,
     SplashScreen,
     {provide: ErrorHandler, useClass: IonicErrorHandler},
-    FileTransferObject,
-    File,
-    Camera
+    PlacesService,
+      TwitterService,
+      Base64,
+      Posts,
+      FileTransfer,
+      WeatherProvider,
+      AuthService
   ]
 })
-export class AppModule {}
+export class AppModule {
+}

@@ -1,0 +1,83 @@
+<ion-header>
+  <ion-navbar>
+    <ion-title>
+     Activities:  {{ post.title }}
+    </ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding class="bg">
+   <ion-card-title>
+        {{ post.title }}
+      </ion-card-title>
+  <p class="meta">Posted in <a href="/categories/show/{{post.category}}">{{post.category}} </a> by {{post.author}} on <ion-datetime displayFormat="MM/DD/YYYY" [(ngModel)]="postDate"></ion-datetime></p>
+  <ion-card>
+    <img src="https://trablog.herokuapp.com/images/{{post.mainimage}}">
+    <ion-card-content text-left>
+
+       <div class="discription" [innerHTML]="post.body" ></div>
+
+        <h3 class="comment-title">Comments</h3>
+        <div *ngFor="let comment of post.comments; let i = index">
+          <hr>
+    <div text-left>
+     <div class="comment"><p class="comment-name">{{comment.name}}</p><p class="comment-body">{{comment.body}}</p></div>
+    </div>
+  </div>
+    </ion-card-content>
+  </ion-card>
+
+
+   <ion-card>
+     <h3 padding class="comment-title">Add Comments</h3>
+   <form #f="ngForm" (ngSubmit)="onSubmit(f)">
+    <ion-list>
+      <ion-item>
+        <ion-label fixed>Name</ion-label>
+        <ion-input
+          type="text"
+          placeholder="Name"
+          name="name"
+          ngModel
+          required></ion-input>
+      </ion-item>
+        <ion-item>
+        <ion-label fixed>Email</ion-label>
+        <ion-input
+          type="email"
+          placeholder="Email"
+          name="email"
+          ngModel
+          required></ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-label floating>Comment Text</ion-label>
+        <ion-textarea
+          name="body"
+          ngModel
+          required></ion-textarea>
+      </ion-item>
+    </ion-list>
+    <ion-grid>
+       <ion-row>
+           <ion-col>
+               <button
+                       ion-button
+                       color="secondary"
+                       block
+                       type="submit"
+                       [disabled]="!f.valid">
+                   Add Comment
+               </button>
+           </ion-col>
+       </ion-row>
+   </ion-grid>
+  </form>
+   </ion-card>
+
+</ion-content>
+
+
+
+

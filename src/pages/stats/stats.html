@@ -1,0 +1,30 @@
+<ion-header>
+  <ion-navbar>
+    <ion-buttons left>
+      <button ion-button menuToggle end>
+        <ion-icon name="menu"></ion-icon>
+      </button>
+    </ion-buttons>
+    <ion-buttons end *ngIf="this.isLoggedIn">
+      <button ion-button icon-only [navPush]="addPlacePage">
+        <ion-icon name="add"></ion-icon>
+      </button>
+    </ion-buttons>
+    <ion-title>
+      Plantify Stats
+    </ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding class="bg">
+  <ion-card>
+    <ion-card-content text-center>
+      <ion-card-title>
+       Recent Activity
+      </ion-card-title>
+      <div class="discription">{{recent_activity['activitytype']}}: {{recent_activity['distance']}}KM</div>
+      <div class="discription">FootPrint Challenges: 0</div>
+    </ion-card-content>
+  </ion-card>
+
+</ion-content>
